@@ -1,90 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Notes Web App</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      background-color: #f0f0f0;
-    }
-    .login-form, .welcome-message {
-      background-color: white;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      width: 100%;
-      max-width: 400px;
-      display: none;
-    }
-    .welcome-message {
-      display: none;
-      text-align: center;
-    }
-    h2 {
-      margin-bottom: 20px;
-    }
-    input[type="text"], input[type="submit"] {
-      padding: 10px;
-      width: 100%;
-      margin: 10px 0;
-      box-sizing: border-box;
-    }
-    input[type="submit"] {
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
-    @media (max-width: 600px) {
-      .login-form, .welcome-message {
-        width: 90%;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes App</title>
+    <link rel="stylesheet" href="notes-web-app.css">
 </head>
 <body>
+    <div class="login-form firstpagelogin" id="loginForm">
+        <h2>Login
+            <br><h3>Via Mail or Username</h3>
+        </h2>
+        <form id="loginFormElement">
+            <input type="text" id="username" placeholder="Enter your name or Email" required style="border-radius: 4px;">
+            <input type="submit" value="Login" class="loginButton">
+        </form>
+    </div>
 
-<div class="login-form">
-  <h2>Login</h2>
-  <form id="loginForm">
-    <input type="text" id="username" placeholder="Enter your name" required>
-    <input type="submit" value="Login">
-  </form>
-</div>
+    <div class="greeting" id="welcomeMessage">
+        <h2>Welcome, <span id="showname"></span>!</h2>
+        <button id="logoutbtn" style="background-color: rgb(4,4,61);color: white; border-radius: 5px;cursor: pointer;">Logout</button>
+        <button id="toggleModeButton" style="background-color: rgb(4,4,61);color: white; border-radius: 5px;cursor: pointer;">Toggle Dark/Light Mode</button>
 
-<div class="welcome-message" id="welcomeMessage">
-  <h2>Welcome, <span id="displayName"></span>!</h2>
-</div>
+    </div>
 
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const loginForm = document.querySelector('.login-form');
-    const welcomeMessage = document.querySelector('.welcome-message');
-    const displayName = document.getElementById('displayName');
-    const storedName = localStorage.getItem('username');
-    if (storedName) {
-      displayName.textContent = storedName;
-      welcomeMessage.style.display = 'block';
-    } else {
-      loginForm.style.display = 'block';
-    }
-    document.getElementById('loginForm').addEventListener('submit', function(event) {
-      event.preventDefault();
-      const username = document.getElementById('username').value;
-      localStorage.setItem('username', username);
-      displayName.textContent = username;
-      loginForm.style.display = 'none';
-      welcomeMessage.style.display = 'block';
-    });
-  });
-</script>
+    <div class="note-container" id="noteholder" style="display: none;">
+        <h2 style="font-weight: 900; font-family:'Times New Roman', Times, serif;">Create/Edit Note(s)</h2>
+        <form id="noteentry">
+            <input type="text" id="noteHeading" placeholder="Title of the Note" required>
+            <textarea id="notedata" placeholder="Start Capturing your thought here..." required></textarea>
+            
+            <!-- DROPDOWN MENU FOR CATEGORY SELECTION -->
 
+            <label for="categoryselected">Select Category:</label>
+            <select id="categoryselected">
+                <option value="" selected disabled>Select a category</option>
+                <option value="lightblue">Work</option>
+                <option value="darkblue">Personal</option>
+                <option value="blue">Important</option>
+                <option value="purple">Miscellaneous</option>
+            </select>
+            
+            <input type="submit" id="saveNoteButton" value="Save Note">
+        </form>
+        <h3 style="font-family: 'Times New Roman', Times, serif;">Your Notes</h3>
+        <input type="text" id="searchquery" placeholder="Search notes..." />
+
+        <!-- DROPDOWN MENU FOR SORTING OPTIONS -->
+
+        <select id="sortOptions">
+          <option value="" selected disabled>Sort By</option>
+          <option value="title">Sort by Title</option>
+          <option value="date">Sort by Date</option>
+        </select>
+
+        <ul id="notelist"></ul>
+    </div>
+
+   <div id="thought" class="login-form thought">
+    <h2>Every thought is a seed , nurture it with notes and watch your ideas grow .</h2>
+   </div>
+
+   <div class="login-form webname" id="web-app-name">
+    <h1>Note Nest /.</h1>
+   </div>
+
+    <script src="notes-web-app.js"></script>
 </body>
-</html>
