@@ -32,7 +32,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const toggleModeButton = document.getElementById("toggleModeButton");
 
 
-
   //USER EXISTS OR NOT
 
 
@@ -151,7 +150,6 @@ document.addEventListener("DOMContentLoaded", function () {
     addPinButtonListeners();
     addDragAndDropListeners();
   }
-
   
   // SUBMITTING THE NOTES USING SAVE NOTES
 
@@ -337,3 +335,13 @@ document.addEventListener("DOMContentLoaded", function () {
     ).element;
   }
 });
+
+
+
+// THINGS REMAINING NOW ARE --
+
+// 1) MULTIUSER LOGIN SYSTEM
+// 2)IMAGE ADDITION IN THE BACKGROUND
+// 3)LIMIT FOR WORDS
+// 4)TEXT EDITOR
+// 5)CATEGORY FILTERING USING COLORS

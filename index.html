@@ -5,6 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notes App</title>
     <link rel="stylesheet" href="notes-web-app.css">
+    <script>
+        
+       //LOGOUT (ctrl+x)
+
+document.addEventListener('keydown', function(event) {
+    
+    if ((event.ctrlKey) && event.key === 'x') {
+        event.preventDefault(); 
+        document.querySelector('#logoutbtn').click();
+    }
+});
+
+//PAGE LOGIN (ctrl+l)
+
+document.addEventListener('keydown', function(event) {
+    
+    if ((event.ctrlKey) && event.key === 'l') {
+        event.preventDefault(); 
+        document.querySelector('#pagelogin').click();
+    }
+});
+
+//TOGGLE MODE BUTTON (ctrl+m)
+
+document.addEventListener('keydown', function(event) {
+    
+    if ((event.ctrlKey) && event.key === 'm') {
+        event.preventDefault(); 
+        document.querySelector('#toggleModeButton').click();
+    }
+});
+
+//NOTE SAVE (ctrl+f)
+
+document.addEventListener('keydown', function(event) {
+    
+    if ((event.ctrlKey) && event.key === 'f') {
+        event.preventDefault(); 
+        document.querySelector('#saveNoteButton').click();
+    }
+});
+    </script>
+
 </head>
 <body>
     <div class="login-form firstpagelogin" id="loginForm">
@@ -13,7 +56,7 @@
         </h2>
         <form id="loginFormElement">
             <input type="text" id="username" placeholder="Enter your name or Email" required style="border-radius: 4px;" aria-label="Email">
-            <input type="submit" value="Login" class="loginButton" aria-label="Submit">
+            <input type="submit" value="Login" class="loginButton" aria-label="Submit" id="pagelogin">
         </form>
     </div>
 
@@ -28,7 +71,7 @@
         <h2 style="font-weight: 900; font-family:'Times New Roman', Times, serif;">Create/Edit Note(s)</h2>
         <form id="noteentry">
             <input type="text" id="noteHeading" placeholder="Title of the Note" required aria-label="NOTE HEADNG">
-            <textarea id="notedata" placeholder="Start Capturing your thought here..." required aria-label="NOTE CONTENT"></textarea>
+            <textarea name="editor" id="notedata" placeholder="Start Capturing your thought here..." required aria-label="NOTE CONTENT"></textarea>
             
             <!-- DROPDOWN MENU FOR CATEGORY SELECTION -->
 
